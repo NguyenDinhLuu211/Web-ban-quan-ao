@@ -79,7 +79,7 @@
               <div class="col-md-4 col-sm-12 user-items">
                 <ul class="d-flex justify-content-end list-unstyled">
                   <li>
-                    <a href="login.html">
+                    <a href="login.jsp">
                       <i class="icon icon-user"></i>
                     </a>
                   </li>
@@ -147,7 +147,7 @@
                         <a href="#" class="item-anchor d-flex align-item-center" data-effect="Pages">Pages<i class="icon icon-chevron-down"></i></a>
                         <ul class="submenu">
                           <li><a href="coming-soon.html" class="item-anchor">Coming soon<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="login.html" class="item-anchor">Login<span class="text-primary"> (PRO)</span></a></li>
+                          <li><a href="login.jsp" class="item-anchor">Login<span class="text-primary"> (PRO)</span></a></li>
                           <li><a href="faqs.html" class="item-anchor">FAQs<span class="text-primary"> (PRO)</span></a></li>
                           <li><a href="styles.html" class="item-anchor">Styles</a></li>
                           <li><a href="thank-you.html" class="item-anchor">Thankyou</a></li>
