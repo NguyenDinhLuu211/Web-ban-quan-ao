@@ -1,7 +1,7 @@
 package Service;
 
 import DB.DBConnection;
-import Entity.User;
+import Model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

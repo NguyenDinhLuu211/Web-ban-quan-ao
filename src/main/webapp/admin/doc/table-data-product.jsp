@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,9 +85,9 @@
                     <div class="tile-body">
                         <div class="row element-button">
                             <div class="col-sm-2">
-              
-                              <a class="btn btn-add btn-sm" href="form-add-san-pham.html" title="Thêm"><i class="fas fa-plus"></i>
-                                Tạo mới sản phẩm</a>
+                                <%--1. Chon them san pham--%>
+                              <a class="btn btn-add btn-sm" href="form-add-product.jsp" title="Thêm"><i class="fas fa-plus"></i>
+                                Thêm sản phẩm</a>
                             </div>
                             <div class="col-sm-2">
                               <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i
