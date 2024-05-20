@@ -92,9 +92,9 @@
 <div class="container">
     <div class="box-login">
         <div class="title">
-                <span>ĐĂNG NHẬP</span>
+                <span>ĐĂNG KÍ</span>
         </div>
-        <form action="" class="">
+        <form action="RegisterController" class="">
             <div class="form-control">
                 <!-- <lable>Tên đăng nhập</lable> -->
                 <input type="text" name="username" id="username" placeholder="Nhập username...">
