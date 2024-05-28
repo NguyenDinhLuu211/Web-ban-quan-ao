@@ -1,15 +1,24 @@
 package Controller;
 
 import Service.ProductManagementService;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 
+
 @WebServlet(name = "AddProductController", value = "/admin/doc/AddProductController")
+@MultipartConfig
 public class AddProductController extends HttpServlet {
+
+    private static final String UPLOAD_DIRECTORY = "uploads";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -28,23 +37,19 @@ public class AddProductController extends HttpServlet {
         String size = request.getParameter("size");
         String quantity = request.getParameter("quantity");
         String price = request.getParameter("price");
-        String thumbnail = request.getParameter("ImageUpload");
+        String thumbnailFileName = request.getParameter("ImageUpload");
         String content = request.getParameter("mota");
-        if (name.isEmpty() || category.isEmpty() || color.isEmpty() || quantity.isEmpty()
-                || size.isEmpty() || price.isEmpty() || thumbnail.isEmpty() || content.isEmpty()) {
-            request.getRequestDispatcher("form-add-product.jsp").forward(request, response);
-        } else {
-            int categoryParsed = Integer.parseInt(category);
-            int colorParsed = Integer.parseInt(color);
-            int sizeParsed = Integer.parseInt(size);
-            int quantityParsed = Integer.parseInt(quantity);
-            double priceParsed = Double.parseDouble(price);
-            ProductManagementService service = new ProductManagementService();
-            // 8. Gui thong tin den service
-            service.addProduct(categoryParsed, name, thumbnail, content, priceParsed,
-                    colorParsed, sizeParsed, quantityParsed);
-            // 10. Quay lai trang
-            response.sendRedirect("table-data-product.jsp");
-        }
+
+        int categoryParsed = Integer.parseInt(category);
+        int colorParsed = Integer.parseInt(color);
+        int sizeParsed = Integer.parseInt(size);
+        int quantityParsed = Integer.parseInt(quantity);
+        double priceParsed = Double.parseDouble(price);
+        ProductManagementService service = new ProductManagementService();
+        // 8. Gui thong tin den service
+        service.addProduct(categoryParsed, name, thumbnailFileName, content, priceParsed,
+                colorParsed, sizeParsed, quantityParsed);
+        // 10. Quay lai trang
+        response.sendRedirect("table-data-product.jsp");
     }
 }

@@ -1,13 +1,21 @@
 package Service;
 
 import DB.DBConnection;
-import Model.Product;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.json.JSONObject;
 
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.Base64;
 
 public class ProductManagementService {
     private PreparedStatement ps;
@@ -18,6 +26,9 @@ public class ProductManagementService {
     // 9. Luu vao database
     public void addProduct(int categoryId, String name, String thumbnail
             , String content, double price, int colorId, int sizeId, int quantity) {
+
+        System.out.println("Thumb: " + thumbnail);
+
         String query = "insert into product(category_id, name, thumbnail" +
                 ", content, price, discount, status, created_at, updated_at)" +
                 "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -27,7 +38,7 @@ public class ProductManagementService {
             //
             ps.setInt(1, categoryId);
             ps.setString(2, name);
-            ps.setString(3, "http://localhost:8888/CNPM_Thu2_Ca1_Nhom10_war/images/" + thumbnail);
+            ps.setString(3, "http://localhost:8888/CNPM_Thu2_Ca1_Nhom10_war/admin/images/" + thumbnail);
             ps.setString(4, content);
             ps.setDouble(5, price);
             ps.setDouble(6, 0);
@@ -62,8 +73,13 @@ public class ProductManagementService {
             conn.close();
 
             System.out.println("Add product success");
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+
+
     }
 }
